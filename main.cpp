@@ -56,29 +56,9 @@ int main()
         // Required Exam Grade Calculator
         std::cout << "Required Exam Grade Calculator\n\n";
 
-        double termWorkPercent;
-        std::cout << "Enter the percentage of the final grade based on term work: ";
-        std::cin >> termWorkPercent;
+        // Placeholder comment
+        std::cout << "Required Exam Grade Calculator functionality to be implemented.\n";
 
-        int numAssessments;
-        std::cout << "Enter the number of final assessments: ";
-        std::cin >> numAssessments;
-
-        std::vector<std::string> names(numAssessments);
-        std::vector<double> worthOfFinal(numAssessments);
-        std::vector<double> required(numAssessments);
-
-        for (int i = 0; i < numAssessments; ++i)
-        {
-            std::cout << "Enter the narme of assessment " << (i + 1) << ": ";
-            std::cin >> names[i];
-            std::cout << "Enter the percentage of the final grade for assessment " << (i + 1) << ": ";
-            std::cin >> worthOfFinal[i];
-            std::cout << "Enter the required grade for assessment " << (i + 1) << ": ";
-            std::cin >> required[i];
-        }
-
-        RequiredExamGrade::calculateRequiredGrades(termWorkPercent, names, worthOfFinal, required);
         break;
     }
 

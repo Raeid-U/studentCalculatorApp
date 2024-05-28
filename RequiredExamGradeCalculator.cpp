@@ -1,7 +1,6 @@
-#include <iostream>
-#include <vector>
-#include <cmath>
 #include "RequiredExamGradeCalculator.h"
+#include <iostream>
+#include <cmath>
 
 void RequiredGradeCalculator::calculateRequiredGrade()
 {
@@ -40,7 +39,6 @@ void RequiredGradeCalculator::calculateRequiredGrade()
         weights.push_back(weight / 100.0); // Convert weight from percentage to proportion
     }
 
-    // Calculate weight achieved
     double termGrade;
     std::cout << "Enter your term grade (as a percentage): ";
     std::cin >> termGrade;
@@ -52,8 +50,7 @@ void RequiredGradeCalculator::calculateRequiredGrade()
         std::cin >> summativeGrade;
     }
 
-    // Calculate current grade
-    double currentGrade;
+    double currentGrade = 0.0;
     if (caseChoice == 1)
     {
         currentGrade = termGrade * weights[0] + summativeGrade * weights[1];
@@ -63,13 +60,11 @@ void RequiredGradeCalculator::calculateRequiredGrade()
         currentGrade = termGrade * weights[0];
     }
 
-    // Ask for desired grade
     double desiredGrade;
     std::cout << "Enter the desired grade in the course: ";
     std::cin >> desiredGrade;
 
-    // Calculate required exam grade
-    double gradeNeeded = (desiredGrade - currentGrade) / weights.back(); // Correctly account for exam weight
+    double gradeNeeded = (desiredGrade - currentGrade) / weights[weights.size() - 1]; // Correctly account for exam weight
 
     if (std::isnan(gradeNeeded) || gradeNeeded > 100 || gradeNeeded < 0)
     {

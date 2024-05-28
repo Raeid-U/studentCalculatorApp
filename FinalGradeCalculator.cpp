@@ -11,12 +11,5 @@ double FinalGradeCalculator::calculateFinalGrade(const std::vector<double> &grad
         totalWeight += weights[i];
     }
 
-    if (totalWeight == 0.0)
-    {
-        return -1.0; // Avoid division by zero
-    }
-
-    double finalGrade = totalGrade / totalWeight;
-
-    return finalGrade;
+    return totalWeight == 0.0 ? -1.0 : totalGrade / totalWeight;
 }

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <numeric>
-#include <cstdlib> // Include this for system() function
+#include <cstdlib>
 #include "FinalGradeCalculator.h"
 #include "GPACalculator.h"
 #include "RequiredExamGradeCalculator.h"
@@ -55,10 +55,10 @@ void finalGradeCalculator()
 
 void requiredExamGradeCalculator()
 {
-    std::cout << " ___________________________\n";
-    std::cout << "|                           |\n";
-    std::cout << "| Required Exam Calculator  |\n";
-    std::cout << "|___________________________|\n\n";
+    std::cout << " ____________________________\n";
+    std::cout << "|                            |\n";
+    std::cout << "|  Required Grade Calculator |\n";
+    std::cout << "|____________________________|\n\n";
 
     RequiredGradeCalculator::calculateRequiredGrade();
 }
@@ -94,6 +94,13 @@ int main()
     char runAgain;
     do
     {
+
+#ifdef _WIN32
+        system("cls");
+#else
+        system("clear");
+#endif
+
         displayMenu();
 
         int choice;

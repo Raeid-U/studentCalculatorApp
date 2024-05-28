@@ -124,15 +124,6 @@ int main()
 
         std::cout << "Do you want to run the program again? (y/n): ";
         std::cin >> runAgain;
-
-        if (runAgain == 'y' || runAgain == 'Y')
-        {
-#ifdef _WIN32
-            system("cls");
-#else
-            system("clear");
-#endif
-        }
     } while (runAgain == 'y' || runAgain == 'Y');
 
     return 0;

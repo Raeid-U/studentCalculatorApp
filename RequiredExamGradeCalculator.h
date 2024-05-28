@@ -1,4 +1,10 @@
 #pragma once
 
+#include <iostream>
 #include <vector>
-#include <string>
+
+class RequiredGradeCalculator
+{
+public:
+    static void calculateRequiredGrade();
+};

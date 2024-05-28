@@ -1,153 +1,153 @@
 #include <iostream>
 #include <vector>
+#include <numeric>
 #include "FinalGradeCalculator.h"
 #include "GPACalculator.h"
 #include "RequiredExamGradeCalculator.h"
 
+#include "FinalGradeCalculator.cpp"
+#include "GPACalculator.cpp"
+#include "RequiredExamGradeCalculator.cpp"
+
 int main()
 {
-    std::cout << "Student Grade Calculator\n\n";
-
-    std::cout << "Select a function:\n";
-    std::cout << "1. Final Grade Calculator\n";
-    std::cout << "2. Required Exam Grade Calculator\n";
-    std::cout << "3. GPA Calculator\n";
-    std::cout << "Enter choice (1/2/3): ";
-
-    int choice;
-    std::cin >> choice;
-
-    switch (choice)
+    char runAgain;
+    do
     {
-    case 1:
-    {
-        // Final Grade Calculator
-        std::cout << "Final Grade Calculator\n\n";
+        std::cout << "Student Grade Calculator\n\n";
 
-        int numAssignments;
-        std::cout << "Enter the number of assignments completed in the course: ";
-        std::cin >> numAssignments;
+        std::cout << "Select a function:\n";
+        std::cout << "1. Final Grade Calculator\n";
+        std::cout << "2. Required Exam Grade Calculator\n";
+        std::cout << "3. GPA Calculator\n";
+        std::cout << "Enter choice (1/2/3): ";
 
-        std::vector<double> grades(numAssignments);
-        std::vector<double> weights(numAssignments);
+        int choice;
+        std::cin >> choice;
 
-        for (int i = 0; i < numAssignments; ++i)
+        switch (choice)
         {
-            std::cout << "Enter the grade (as a percent) for assignment " << (i + 1) << ": ";
-            std::cin >> grades[i];
-            std::cout << "Enter the weight for assignment " << (i + 1) << ": ";
-            std::cin >> weights[i];
+        case 1:
+        {
+            // Final Grade Calculator
+            std::cout << "Final Grade Calculator\n\n";
+
+            int numAssignments;
+            std::cout << "Enter the number of assignments completed in the course: ";
+            std::cin >> numAssignments;
+
+            std::vector<double> grades(numAssignments);
+            std::vector<double> weights(numAssignments);
+
+            for (int i = 0; i < numAssignments; ++i)
+            {
+                std::cout << "Enter the grade (as a percent) for assignment " << (i + 1) << ": ";
+                std::cin >> grades[i];
+                std::cout << "Enter the weight for assignment " << (i + 1) << ": ";
+                std::cin >> weights[i];
+            }
+
+            double finalGrade = FinalGradeCalculator::calculateFinalGrade(grades, weights);
+            if (finalGrade >= 0.0)
+            {
+                std::cout << "Final Grade: " << std::round(finalGrade) << "%\n"; // Round the final grade
+            }
+            else
+            {
+                std::cout << "Calculation failed\n";
+            }
+            break;
         }
 
-        double finalGrade = FinalGradeCalculator::calculateFinalGrade(grades, weights);
-        if (finalGrade >= 0.0)
+        case 2:
         {
-            std::cout << "Final Grade: " << std::round(finalGrade) << "%\n"; // Round the final grade
-        }
-        else
-        {
-            std::cout << "Calculation failed\n";
-        }
-        break;
-    }
+            // Required Exam Grade Calculator
+            std::cout << "Required Exam Grade Calculator\n\n";
 
-    case 2:
-    {
-        // Required Exam Grade Calculator
-        std::cout << "Required Exam Grade Calculator\n\n";
+            RequiredGradeCalculator::calculateRequiredGrade();
 
-        // Placeholder comment
-        std::cout << "Required Exam Grade Calculator functionality to be implemented.\n";
-
-        break;
-    }
-
-    case 3:
-    {
-        // GPA Calculator
-        std::cout << "GPA Calculator\n\n";
-
-        int numCourses;
-        std::cout << "Enter the number of courses: ";
-        std::cin >> numCourses;
-
-        std::vector<std::string> courses(numCourses);
-        std::vector<double> grades(numCourses);
-
-        for (int i = 0; i < numCourses; ++i)
-        {
-            std::cout << "Enter the course name for course " << (i + 1) << ": ";
-            std::cin >> courses[i];
-            std::cout << "Enter the final grade (as a percent) for course " << (i + 1) << ": ";
-            std::cin >> grades[i];
+            break;
         }
 
-        // Display each course name and grade achieved
-        std::cout << "\nCourse Grades:\n";
-        for (int i = 0; i < numCourses; ++i)
+        case 3:
         {
-            std::cout << courses[i] << " : " << grades[i] << "%\n";
+            std::cout << "GPA Calculator\n\n";
+
+            int numCourses;
+            std::cout << "Enter the number of courses: ";
+            std::cin >> numCourses;
+
+            std::vector<double> grades(numCourses);
+
+            for (int i = 0; i < numCourses; ++i)
+            {
+                std::cout << "Enter the final grade (as a percent) for course " << (i + 1) << ": ";
+                std::cin >> grades[i];
+            }
+
+            // Calculate GPA
+            double gpa = GPACalculator::calculateGPA(grades);
+            double average = std::accumulate(grades.begin(), grades.end(), 0.0) / grades.size();
+            std::cout << "Final Average: " << average << "%\n";
+
+            // Display GPA
+            std::cout << "Final GPA: ";
+            if (gpa >= 4.0)
+            {
+                std::cout << "4.0\n";
+            }
+            else if (gpa >= 3.7)
+            {
+                std::cout << "3.7\n";
+            }
+            else if (gpa >= 3.3)
+            {
+                std::cout << "3.3\n";
+            }
+            else if (gpa >= 3.0)
+            {
+                std::cout << "3.0\n";
+            }
+            else if (gpa >= 2.7)
+            {
+                std::cout << "2.7\n";
+            }
+            else if (gpa >= 2.3)
+            {
+                std::cout << "2.3\n";
+            }
+            else if (gpa >= 2.0)
+            {
+                std::cout << "2.0\n";
+            }
+            else if (gpa >= 1.7)
+            {
+                std::cout << "1.7\n";
+            }
+            else if (gpa >= 1.3)
+            {
+                std::cout << "1.3\n";
+            }
+            else if (gpa >= 1.0)
+            {
+                std::cout << "1.0\n";
+            }
+            else
+            {
+                std::cout << "0.0\n";
+            }
+
+            break;
         }
 
-        // Calculate GPA
-        double gpa = GPACalculator::calculateGPA(courses, grades);
-        std::cout << "\nPercent Average: " << gpa << "%\n";
-
-        // Display GPA
-        std::cout << "GPA: ";
-
-        // Assign GPA based on percent average
-        if (gpa >= 93)
-        {
-            std::cout << "4.0\n";
-        }
-        else if (gpa >= 90)
-        {
-            std::cout << "3.7\n";
-        }
-        else if (gpa >= 87)
-        {
-            std::cout << "3.3\n";
-        }
-        else if (gpa >= 83)
-        {
-            std::cout << "3.0\n";
-        }
-        else if (gpa >= 80)
-        {
-            std::cout << "2.7\n";
-        }
-        else if (gpa >= 77)
-        {
-            std::cout << "2.3\n";
-        }
-        else if (gpa >= 73)
-        {
-            std::cout << "2.0\n";
-        }
-        else if (gpa >= 70)
-        {
-            std::cout << "1.7\n";
-        }
-        else if (gpa >= 67)
-        {
-            std::cout << "1.3\n";
-        }
-        else if (gpa >= 65)
-        {
-            std::cout << "1.0\n";
-        }
-        else
-        {
-            std::cout << "0.0\n";
+        default:
+            std::cout << "Invalid choice\n";
+            break;
         }
 
-        break;
-    }
-    default:
-        std::cout << "Invalid choice\n";
-        break;
-    }
+        std::cout << "Do you want to run the program again? (y/n): ";
+        std::cin >> runAgain;
+    } while (runAgain == 'y' || runAgain == 'Y');
 
     return 0;
 }

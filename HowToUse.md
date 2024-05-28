@@ -1,5 +1,3 @@
-Sure, here's the markdown version without autoformatting:
-
 # Student Grade Calculator
 
 This program helps students calculate their final grades, GPA, and the required exam grades to achieve desired course outcomes. It provides an interactive terminal-based interface for easy input and computation.

@@ -148,9 +148,4 @@ The Student Grade Calculator is a comprehensive tool that aids in computing fina
 
 ### Code Repository
 
-For the complete source code and more details, visit the [GitHub repository](https://github.com/your-repo/student-grade-calculator).
-
-### Future Enhancements
-
-- Adding a graphical user interface (GUI) for better user interaction.
-- Extending support for different grading systems and custom weight configurations.
+For the complete source code and more details, visit the [GitHub repository](https://github.com/Raeid-U/studentCalculatorApp.git).

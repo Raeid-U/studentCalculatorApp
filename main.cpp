@@ -77,7 +77,7 @@ void gpaCalculator()
         "Queen's University", "Western University", "Waterloo University", "University of Manitoba", "University of Northern British Columbia", "University of Prince Edward Island"};
 
     float entranceGrades[numUniversities] = {
-        82.4, 84.2, 84.3, 85.0, 85.2, 85.2, 85.4, 85.5, 85.6, 85.7, 85.9, 86.0, 86.4, 86.5, 86.7,
+        62.4, 74.2, 84.3, 85.0, 85.2, 85.2, 85.4, 85.5, 85.6, 85.7, 85.9, 86.0, 86.4, 86.5, 86.7,
         86.8, 86.8, 86.9, 87.0, 87.2, 87.3, 87.3, 87.3, 87.6, 87.6, 87.6, 87.7, 87.9, 88.0, 88.1,
         88.1, 88.2, 88.3, 88.4, 88.7, 89.1, 89.2, 89.3, 89.5, 89.7, 89.9, 90.5, 92.0, 92.0, 92.2,
         92.2, 92.6, 92.8, 90.0, 88.6};

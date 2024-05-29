@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <numeric>
+#include <string>
 #include <cstdlib>
 #include "FinalGradeCalculator.h"
 #include "GPACalculator.h"
@@ -65,6 +66,22 @@ void requiredExamGradeCalculator()
 
 void gpaCalculator()
 {
+    const int numUniversities = 50;
+    std::string universities[numUniversities] = {
+        "Lethbridge University", "University of Windsor", "Ontario Tech University", "UQAM", "Bishop's University", "Trent University", "University of Winnipeg", "Brock University",
+        "Laurentian University", "Lakehead University", "York University", "Concordia University", "Cape Breton University", "Acadia University", "Mount Saint Vincent University",
+        "Nipissing University", "Saint Mary's University", "Carleton University", "Wilfrid Laurier University", "University of Ottawa", "University of Moncton", "Regina University",
+        "St. Thomas University", "Laval University", "Memorial University", "University of New Brunswick", "UPEI", "University of Toronto", "Mount Allison University",
+        "Brandon University", "Sherbrooke University", "UNBC", "University of Guelph", "St. Francis Xavier University", "Simon Fraser University", "Toronto Metropolitan University",
+        "University of Saskatchewan", "Dalhousie University", "University of Montréal", "University of Calgary", "University of Alberta", "Victoria University", "McGill University", "McMaster University",
+        "Queen's University", "Western University", "Waterloo University", "University of Manitoba", "University of Northern British Columbia", "University of Prince Edward Island"};
+
+    float entranceGrades[numUniversities] = {
+        82.4, 84.2, 84.3, 85.0, 85.2, 85.2, 85.4, 85.5, 85.6, 85.7, 85.9, 86.0, 86.4, 86.5, 86.7,
+        86.8, 86.8, 86.9, 87.0, 87.2, 87.3, 87.3, 87.3, 87.6, 87.6, 87.6, 87.7, 87.9, 88.0, 88.1,
+        88.1, 88.2, 88.3, 88.4, 88.7, 89.1, 89.2, 89.3, 89.5, 89.7, 89.9, 90.5, 92.0, 92.0, 92.2,
+        92.2, 92.6, 92.8, 90.0, 88.6};
+
     std::cout << " ___________________________\n";
     std::cout << "|                           |\n";
     std::cout << "|      GPA Calculator       |\n";
@@ -85,8 +102,33 @@ void gpaCalculator()
     double gpa = GPACalculator::calculateGPA(grades);
     double average = std::accumulate(grades.begin(), grades.end(), 0.0) / grades.size();
     std::cout << "Final Average: " << average << "%\n";
-
     std::cout << "Final GPA: " << gpa << "\n";
+
+    char choice;
+    std::cout << "Do you want to see which universities you can get into with your average? (y/n): ";
+    std::cin >> choice;
+
+    if (choice == 'y' || choice == 'Y')
+    {
+        bool found = false;
+        for (int i = 0; i < numUniversities; ++i)
+        {
+            if (average >= entranceGrades[i])
+            {
+                if (!found)
+                {
+                    std::cout << "Here are the Universities you can get into with an average of " << average << "%:\n";
+                    std::cout << "Name - Entrance Average\n";
+                }
+                std::cout << universities[i] << " - " << entranceGrades[i] << "%\n";
+                found = true;
+            }
+        }
+        if (!found)
+        {
+            std::cout << "There are no Universities in Canada that would accept you based solely on your average. Try to get your grades up!\n";
+        }
+    }
 }
 
 int main()
@@ -94,7 +136,6 @@ int main()
     char runAgain;
     do
     {
-
 #ifdef _WIN32
         system("cls");
 #else

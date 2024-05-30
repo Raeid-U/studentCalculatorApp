@@ -144,7 +144,7 @@ To achieve 90% in the course, you need to get 95% on the exam.
 
 ## Conclusion
 
-The Student Grade Calculator is a comprehensive tool that aids in computing final grades, GPA, and required exam grades through an intuitive terminal interface. This tool can be especially useful for students aiming to understand and track their academic performance.
+The Student Grade Calculator is a tool that aids in computing final grades, GPA, and required exam grades through an intuitive terminal interface. This tool can be especially useful for students aiming to understand and track their academic performance.
 
 ### Code Repository
 

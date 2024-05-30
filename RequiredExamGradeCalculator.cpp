@@ -7,6 +7,7 @@ void RequiredGradeCalculator::calculateRequiredGrade()
     std::vector<std::string> names;
     std::vector<double> weights;
 
+    // Prompts the user to select if they have a summative or not
     int caseChoice;
     std::cout << "Select case:\n";
     std::cout << "1. Term, Summative, Exam\n";
@@ -14,6 +15,7 @@ void RequiredGradeCalculator::calculateRequiredGrade()
     std::cout << "Enter choice (1/2): ";
     std::cin >> caseChoice;
 
+    // Initialize the Names
     if (caseChoice == 1)
     {
         names.push_back("Term");
@@ -31,12 +33,13 @@ void RequiredGradeCalculator::calculateRequiredGrade()
         return;
     }
 
+    // Convert weight from percentage to proportion
     for (size_t i = 0; i < names.size(); ++i)
     {
         double weight;
         std::cout << "Enter the weight for " << names[i] << ": ";
         std::cin >> weight;
-        weights.push_back(weight / 100.0); // Convert weight from percentage to proportion
+        weights.push_back(weight / 100.0);
     }
 
     double termGrade;
@@ -50,6 +53,7 @@ void RequiredGradeCalculator::calculateRequiredGrade()
         std::cin >> summativeGrade;
     }
 
+    // Calculates current grade based on grades and weights added
     double currentGrade = 0.0;
     if (caseChoice == 1)
     {
@@ -64,8 +68,10 @@ void RequiredGradeCalculator::calculateRequiredGrade()
     std::cout << "Enter the desired grade in the course: ";
     std::cin >> desiredGrade;
 
-    double gradeNeeded = (desiredGrade - currentGrade) / weights[weights.size() - 1]; // Correctly account for exam weight
+    // Calculates the Required Grade
+    double gradeNeeded = (desiredGrade - currentGrade) / weights[weights.size() - 1];
 
+    // Checks to see if the gradeneeded is over 100% or negative
     if (std::isnan(gradeNeeded) || gradeNeeded > 100 || gradeNeeded < 0)
     {
         std::cout << "That grade is unattainable with those marks.\n";

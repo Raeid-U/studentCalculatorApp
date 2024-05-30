@@ -7,6 +7,7 @@
 #include "GPACalculator.h"
 #include "RequiredExamGradeCalculator.h"
 
+// Function to display the main menu to the user
 void displayMenu()
 {
     std::cout << " ____________________________\n";
@@ -21,6 +22,7 @@ void displayMenu()
     std::cout << "Enter choice (1/2/3): ";
 }
 
+// Function to calculate the final grade based on user input
 void finalGradeCalculator()
 {
     std::cout << " ___________________________\n";
@@ -28,13 +30,16 @@ void finalGradeCalculator()
     std::cout << "|   Final Grade Calculator  |\n";
     std::cout << "|___________________________|\n\n";
 
+    // Get the number of assignments from the user
     int numAssignments;
     std::cout << "Enter the number of assignments completed in the course: ";
     std::cin >> numAssignments;
 
+    // Vectors to store grades and weights
     std::vector<double> grades(numAssignments);
     std::vector<double> weights(numAssignments);
 
+    // Get grades and weights for each assignment
     for (int i = 0; i < numAssignments; ++i)
     {
         std::cout << "Enter the grade (as a percent) for assignment " << (i + 1) << ": ";
@@ -43,6 +48,7 @@ void finalGradeCalculator()
         std::cin >> weights[i];
     }
 
+    // Calculate the final grade using the FinalGradeCalculator class
     double finalGrade = FinalGradeCalculator::calculateFinalGrade(grades, weights);
     if (finalGrade >= 0.0)
     {
@@ -54,6 +60,7 @@ void finalGradeCalculator()
     }
 }
 
+// Function to calculate the required exam grade
 void requiredExamGradeCalculator()
 {
     std::cout << " ____________________________\n";
@@ -61,9 +68,11 @@ void requiredExamGradeCalculator()
     std::cout << "|  Required Grade Calculator |\n";
     std::cout << "|____________________________|\n\n";
 
+    // Calculate the required grade using the RequiredGradeCalculator class
     RequiredGradeCalculator::calculateRequiredGrade();
 }
 
+// Function to calculate the GPA based on user input
 void gpaCalculator()
 {
     const int numUniversities = 50;
@@ -87,27 +96,33 @@ void gpaCalculator()
     std::cout << "|      GPA Calculator       |\n";
     std::cout << "|___________________________|\n\n";
 
+    // Get the number of courses from the user
     int numCourses;
     std::cout << "Enter the number of courses: ";
     std::cin >> numCourses;
 
+    // Vector to store grades
     std::vector<double> grades(numCourses);
 
+    // Get grades for each course
     for (int i = 0; i < numCourses; ++i)
     {
         std::cout << "Enter the final grade (as a percent) for course " << (i + 1) << ": ";
         std::cin >> grades[i];
     }
 
+    // Calculate GPA and average grade using the GPACalculator class
     double gpa = GPACalculator::calculateGPA(grades);
     double average = std::accumulate(grades.begin(), grades.end(), 0.0) / grades.size();
     std::cout << "Final Average: " << average << "%\n";
     std::cout << "Final GPA: " << gpa << "\n";
 
+    // Ask user if they want to see the universities they can get into based on their average
     char choice;
     std::cout << "Do you want to see which universities you can get into with your average? (y/n): ";
     std::cin >> choice;
 
+    // Display universities where the user's average meets or exceeds entrance requirements
     if (choice == 'y' || choice == 'Y')
     {
         bool found = false;
@@ -137,16 +152,17 @@ int main()
     do
     {
 #ifdef _WIN32
-        system("cls");
+        system("cls"); // Clear the console on Windows
 #else
-        system("clear");
+        system("clear"); // Clear the console on Unix-based systems
 #endif
 
-        displayMenu();
+        displayMenu(); // Display the main menu
 
         int choice;
         std::cin >> choice;
 
+        // Switch to handle user menu choice
         switch (choice)
         {
         case 1:
@@ -163,6 +179,7 @@ int main()
             break;
         }
 
+        // Ask if user wants to run the program again
         std::cout << "Do you want to run the program again? (y/n): ";
         std::cin >> runAgain;
     } while (runAgain == 'y' || runAgain == 'Y');

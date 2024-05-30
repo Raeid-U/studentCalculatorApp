@@ -3,8 +3,10 @@
 
 double GPACalculator::calculateGPA(const std::vector<double> &grades)
 {
+    // Equation to Calculate Average Grade
     double averageGrade = std::accumulate(grades.begin(), grades.end(), 0.0) / grades.size();
 
+    // If statement to get final GPA
     if (averageGrade >= 93)
         return 4.0;
     if (averageGrade >= 90)

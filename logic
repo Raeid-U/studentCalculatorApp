@@ -1,0 +1,8 @@
+\[
+\text{Final Grade} = \frac{\sum \text{Weight Achieved}}{\sum \text{Weight Available}}
+\]
+
+\[
+\text{Weight Achieved} = \frac{(\text{Number Grade}) \times (\text{Weight})}{100}
+\]
+
